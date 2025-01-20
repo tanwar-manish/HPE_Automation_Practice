@@ -1,3 +1,7 @@
+
+
+
+
   
 CREATE PROCEDURE DatahubPMR.GET_ASSET_RAW_DETAILS      
 AS       
