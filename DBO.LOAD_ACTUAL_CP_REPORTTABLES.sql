@@ -14,7 +14,9 @@ CREATE PROCEDURE DBO.LOAD_ACTUAL_CP_REPORTTABLES
 -- 06/03/2024    V7.0                DH team (MN)    Change in logic for excluding fully extended contracts      
 -- 15/03/2024    V8.0                DH team (MN)    Implemented additional check of ISOVERTERMLEASE column for OTP billing frequency.
 -- 26/05/2024    V9.0                DH team (MN)    Change in implemented after discussion with kalyani.   
+
 -- 21/06/2024    V8.0                DH team (RS)    Issue#306 - Datatype sync for Assec_CD (DBO.REPORT_V_CP_CDF_ASSET) joins to DBO.REPORT_LEGECY_TERMINATED_ASSET table.
+-- 21/01/2025    V8.0.0              Manish 
 ---------------- End Modification Log ------------------------------------------------------------------------------------------                                               
 --------------------------------------------------------------------------------------------------------------------------------   	
 
