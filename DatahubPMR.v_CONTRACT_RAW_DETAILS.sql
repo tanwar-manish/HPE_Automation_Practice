@@ -1,10 +1,3 @@
-/*DBTYPE:SQLSERVER|TARGETDB:HPFSIDS*/
-
-IF EXISTS (SELECT * FROM SYS.VIEWS WHERE OBJECT_ID = OBJECT_ID(N'DatahubPMR.v_CONTRACT_RAW_DETAILS'))
-BEGIN
-    DROP VIEW DatahubPMR.v_CONTRACT_RAW_DETAILS
-END
-GO
 
 
 
@@ -269,8 +262,3 @@ SELECT CRD.* FROM CONTRACT_RAW_DETAILS CRD LEFT OUTER JOIN [DatahubPMR].[CONTRAC
                                                                         ELSE 0
                                            END
 
-
-
-GO
-GRANT SELECT ON DatahubPMR.v_CONTRACT_RAW_DETAILS TO DMUsr01;
-GO
