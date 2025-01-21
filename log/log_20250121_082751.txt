@@ -1,0 +1,104 @@
+2025-01-21 08:27:52 - DB Object Type: tabletype
+DB Object Name: [AZR].[AUSAssetList]
+Added Head: /*DBTYPE:SQLSERVER|TARGETDB:HPFSIDS*/
+Added Pattern: IF NOT EXISTS (SELECT * FROM sys.types st JOIN sys.schemas ss ON st.schema_id = ss.schema_id WHERE st.name = N'[AUSAssetList]' AND ss.name = N'[AZR]')
+BEGIN
+Added Tail: GO
+GRANT EXECUTE ON type::[AZR].[AUSAssetList] TO DMUsr01;
+GO
+------------------------------------
+2025-01-21 08:27:52 - DB Object Type: procedure
+DB Object Name: DatahubPMR.GET_ASSET_RAW_DETAILS
+Added Head: /*DBTYPE:SQLSERVER|TARGETDB:HPFSIDS*/
+Added Pattern: IF EXISTS (SELECT * FROM SYS.OBJECTS WHERE OBJECT_ID = OBJECT_ID(N'DatahubPMR.GET_ASSET_RAW_DETAILS') AND TYPE IN (N'P', N'PC'))
+BEGIN
+    DROP PROCEDURE DatahubPMR.GET_ASSET_RAW_DETAILS
+END
+GO
+Added Tail: GO
+GRANT EXECUTE ON DatahubPMR.GET_ASSET_RAW_DETAILS TO DMUsr01;
+GO
+------------------------------------
+2025-01-21 08:27:52 - DB Object Type: view
+DB Object Name: DatahubPMR.v_CONTRACT_RAW_DETAILS
+Added Head: /*DBTYPE:SQLSERVER|TARGETDB:HPFSIDS*/
+Added Pattern: IF EXISTS (SELECT * FROM SYS.VIEWS WHERE OBJECT_ID = OBJECT_ID(N'DatahubPMR.v_CONTRACT_RAW_DETAILS'))
+BEGIN
+    DROP VIEW DatahubPMR.v_CONTRACT_RAW_DETAILS
+END
+GO
+Added Tail: GO
+GRANT SELECT ON DatahubPMR.v_CONTRACT_RAW_DETAILS TO DMUsr01;
+GO
+------------------------------------
+2025-01-21 08:27:52 - DB Object Type: function
+DB Object Name: [dbo].[NumbersTable]
+Added Head: /*DBTYPE:SQLSERVER|TARGETDB:HPFSIDS*/
+Added Pattern: IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE SPECIFIC_SCHEMA = '[dbo]' AND SPECIFIC_NAME = '[NumbersTable]' AND ROUTINE_TYPE = 'FUNCTION')
+BEGIN
+    DROP FUNCTION [dbo].[NumbersTable]
+END
+GO
+Added Tail: GO
+GRANT EXECUTE ON [dbo].[NumbersTable] TO DMUsr01;
+GO
+------------------------------------
+2025-01-21 08:27:52 - DB Object Type: tabletype
+DB Object Name: [DIMN].[AssetList]
+Added Head: /*DBTYPE:SQLSERVER|TARGETDB:HPFSIDS*/
+Added Pattern: IF NOT EXISTS (SELECT * FROM sys.types st JOIN sys.schemas ss ON st.schema_id = ss.schema_id WHERE st.name = N'[AssetList]' AND ss.name = N'[DIMN]')
+BEGIN
+Added Tail: GO
+GRANT EXECUTE ON type::[DIMN].[AssetList] TO DMUsr01;
+GO
+------------------------------------
+2025-01-21 08:27:52 - DB Object Type: synonym
+DB Object Name: [DIMN].[PP_ASSET_DETAIL_03]
+Added Head: /*DBTYPE:SQLSERVER|TARGETDB:HPFSIDS*/
+Added Pattern: IF EXISTS (SELECT * FROM SYS.SYNONYMS WHERE NAME = N'[DIMN].[PP_ASSET_DETAIL_03]')
+BEGIN
+    DROP SYNONYM [DIMN].[PP_ASSET_DETAIL_03]
+END
+GO
+Added Tail: GO
+GRANT EXECUTE ON [DIMN].[PP_ASSET_DETAIL_03] TO DMUsr01;
+GO
+------------------------------------
+2025-01-21 08:27:52 - Head already exists in DML file: MASTER_IDS_DML.sql, not adding.
+2025-01-21 08:27:52 - DB Object Type: File (DML)
+DB Object Name: MASTER_IDS_DML.sql
+File copied to ddldml folder: C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\ddldml\MASTER_IDS_DML.sql
+------------------------------------
+2025-01-21 08:27:52 - Head already exists in Rollback file: master_ids_pa_rollback_ddl, not adding.
+2025-01-21 08:27:52 - DB Object Type: Rollback
+DB Object Name: master_ids_pa_rollback_ddl
+Processed and saved Rollback file at: C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\Rollback\Master_IDS_PA_Rollback_DDL.sql
+------------------------------------
+2025-01-21 08:27:52 - Head already exists in Rollback file: master_ids_rollback_cp, not adding.
+2025-01-21 08:27:52 - DB Object Type: Rollback
+DB Object Name: master_ids_rollback_cp
+Processed and saved Rollback file at: C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\Rollback\MASTER_IDS_Rollback_CP.sql
+------------------------------------
+2025-01-21 08:27:52 - DB Object Type: view
+DB Object Name: VOL.AnalyticsTarget
+Added Head: /*DBTYPE:SQLSERVER|TARGETDB:HPFSIDS*/
+Added Pattern: IF EXISTS (SELECT * FROM SYS.VIEWS WHERE OBJECT_ID = OBJECT_ID(N'VOL.AnalyticsTarget'))
+BEGIN
+    DROP VIEW VOL.AnalyticsTarget
+END
+GO
+Added Tail: GO
+GRANT SELECT ON VOL.AnalyticsTarget TO DMUsr01;
+GO
+------------------------------------
+2025-01-21 08:27:52 - No SQL file found for jjjjjjjj.
+2025-01-21 08:27:52 - No SQL file found for llllll.
+2025-01-21 08:27:52 - No SQL file found for kkkkkk.
+2025-01-21 08:27:52 - Re-written C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\ddldml\MASTER_IDS_DDL.sql with the head.
+2025-01-21 08:27:52 - Appended and beautified pattern and content for dbo.REPORT_LEGECY_TERMINATED_ASSET to C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\ddldml\MASTER_IDS_DDL.sql.
+2025-01-21 08:27:52 - Appended and beautified pattern and content for dbo.abc to C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\ddldml\MASTER_IDS_DDL.sql.
+2025-01-21 08:27:52 - Successfully processed and appended 2 table(s) to C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\ddldml\MASTER_IDS_DDL.sql.
+2025-01-21 08:27:52 - Copied dAtAFiX.sql to C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\One Time Run - ONLY.
+2025-01-21 08:27:52 - Copied DATAFIX_Search_Asset_Datafix_BEM .sql to C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\One Time Run - ONLY.
+2025-01-21 08:27:52 - Copied DDDDDD_datafix.sql to C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\One Time Run - ONLY.
+2025-01-21 08:27:52 - Copied DDDDDD_Search_Asset_Datafix_BEM.sql to C:\Users\hp-13\Desktop\HPE_Automation\HPE_Automation_2.0\One Time Run - ONLY.

@@ -1,7 +1,10 @@
 /*DBTYPE:SQLSERVER|TARGETDB:HPFSIDS*/
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 149f060f647e603f7c13b1ca04ea771dfeda76a4
 PRINT 'Start Executing : MASTER_IDS_DDL.SQL' 
 -----------------Start File-----MASTER_IDS_DDL.SQL-----------------
 
