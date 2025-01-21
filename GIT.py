@@ -52,7 +52,13 @@ def commit_and_push(feature_branch):
     commit_output = run_command(["git", "commit", "-m", "This is first automation commit..."])
     if commit_output:
         print(commit_output)
-    
+
+    # Ensure that the feature branch exists and is checked out
+    check_branch_output = run_command(["git", "branch", "--list", feature_branch])
+    if feature_branch not in check_branch_output:
+        print(f"Branch {feature_branch} doesn't exist. Creating it...")
+        run_command(["git", "checkout", "-b", feature_branch])
+
     # Push the feature branch
     print(f"Pushing changes to the {feature_branch} branch...")
     push_output = run_command(["git", "push", "origin", feature_branch])
