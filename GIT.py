@@ -104,6 +104,7 @@ def perform_git_operations(excel_file):
         print("Error: repo_url or release_branch are missing in the first row!")
         exit()
 
+    # Correctly name the feature branch
     feature_branch = f"Feature_Datahub_{release_branch}"
 
     print(f"Feature branch name: {feature_branch}")
@@ -121,7 +122,7 @@ def perform_git_operations(excel_file):
         print("Setting up remote repository...")
         run_command(["git", "remote", "add", "origin", repo_url])
 
-    # Pull latest changes
+    # Pull latest changes from the release branch
     print("Pulling latest changes from remote...")
     pull_output = run_command(["git", "pull", "origin", release_branch, "--allow-unrelated-histories"], check=False)
 
@@ -134,3 +135,19 @@ def perform_git_operations(excel_file):
 
     # Create the pull request
     create_pull_request(feature_branch, release_branch)
+
+    # After PR creation, check for merge conflicts in the PR
+    print("\n### Checking for Merge Conflicts in Pull Request ###")
+    conflict_check = run_command(["gh", "pr", "view", "--json", "mergeable", "--jq", ".mergeable"])
+    
+    if conflict_check and conflict_check.strip().lower() == 'false':
+        print("\nMerge conflict detected in PR.")
+        resolve_merge_conflicts()
+    else:
+        print("\nNo conflicts detected in the pull request.")
+        print("Proceeding with the merge.")
+
+    # No auto merge - only after the developer confirms that they have resolved conflicts, we proceed.
+    print("\nPlease resolve any conflicts manually and let me know when you're ready to proceed.")
+    print("After resolving conflicts, please rerun the script to continue the merge process.")
+    exit()
