@@ -3,7 +3,7 @@ import re
 import pandas as pd
 from datetime import datetime
 import shutil
-from GIT import Git_Steps_1to6, Git_Steps_7to13
+from GIT import perform_git_operations
 class SQLEntityModifier:
     def __init__(self, file_path, log_file):
         self.file_path = file_path
@@ -486,14 +486,10 @@ def main():
     # Call the datafix function to process Datafix files
     datafix(base_directory, log_file)
 
-    base_directory = os.path.dirname(os.path.abspath(__file__))
-    excel_path = os.path.join(base_directory, 'Parameter.xlsx')
+    excel_file = 'Parameter.xlsx'
 
-    # Step 1 to 6 (Git initialization, branch creation, etc.)
-    feature_branch, release_branch, commit_message = Git_Steps_1to6(excel_path)
-
-    # Step 7 to 13 (Commit changes, push to remote, create pull request)
-    Git_Steps_7to13(excel_path)
+    # Call the Git operations function
+    perform_git_operations(excel_file)
 
 if __name__ == '__main__':
     main()
