@@ -104,6 +104,7 @@ def perform_git_operations(excel_file):
         print("Error: repo_url or release_branch are missing in the first row!")
         exit()
 
+    # Correct feature branch name based on release branch
     feature_branch = f"Feature_Datahub_{release_branch}"
 
     print(f"Feature branch name: {feature_branch}")
@@ -134,3 +135,21 @@ def perform_git_operations(excel_file):
 
     # Create the pull request
     create_pull_request(feature_branch, release_branch)
+
+    # After PR creation, check if there are merge conflicts in the pull request
+    print("\n### Checking for Merge Conflicts in Pull Request ###")
+    conflict_check = run_command(["gh", "pr", "view", "--json", "mergeable", "--jq", ".mergeable"])
+    
+    if conflict_check and conflict_check.strip().lower() == 'false':
+        print("\nMerge conflict detected in PR.")
+        resolve_merge_conflicts()
+    else:
+        print("\nNo conflicts detected in the pull request.")
+        print("Proceeding with the merge.")
+
+    # Finally, merge the PR if there are no conflicts
+    print("\nMerging pull request...")
+    run_command(["gh", "pr", "merge", "--auto"])
+
+    print("\nMerge completed successfully.")
+
